@@ -5,18 +5,18 @@ class Vechile :
         self.year=year
         self.rental_price_per_day=rental_price_per_day
     def display_info(self):
-        print(
-        f"The vechile has the following properties:"
-        f" (brand): {self.brand}"
-        f" (model):{self.model}"
-        f" (year): {self.year}"
-        f" (rental price per day):{self.rental_price_per_day}"
+       return(
+            f"{self.__class__.__name__}:{self.brand} {self.model},Year:{self.year},"
+            f"Renatal Price:{self.rental_price_per_day}"
         )
     def calculateRentalCost(self,Days):
         return Days*int((self.rental_price_per_day))
-    
-        
-v1=Vechile("BMW","M5","2005","30")
-v1.display_info()
-z=v1.calculateRentalCost(3)
-print(z)
+class Car(Vechile):
+    def __init__(self, brand, model, year, rental_price_per_day,seating_capacity):
+        self.seating_capacity=seating_capacity
+        super().__init__(brand, model, year, rental_price_per_day)
+    def display_info(self):
+        z=super().display_info()
+        print(f"{z},Seats: {self.seating_capacity}")
+c1=Car("Toyota","Corolla","2020","50","5")
+c1.display_info()
