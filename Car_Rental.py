@@ -1,4 +1,4 @@
-class Vechile :
+class vehicle :
     def __init__(self,brand,model,year,rental_price_per_day):
         self.brand=brand
         self.model=model
@@ -15,14 +15,14 @@ class Vechile :
         )
     def calculateRentalCost(self,Days):
         return Days*int((self.get.rental_price_per_day()))
-class Car(Vechile):
+class Car(vehicle):
     def __init__(self, brand, model, year, rental_price_per_day,seating_capacity):
         self.seating_capacity=seating_capacity
         super().__init__(brand, model, year, rental_price_per_day)
     def display_info(self):
         temp=super().display_info()
         print(f"{temp},Seats: {self.seating_capacity}")
-class Bike(Vechile):
+class Bike(vehicle):
     def __init__(self,brand,model,year,rental_price_per_day,engine_capacity):
         self.engine_capacity=engine_capacity
         super().__init__(brand,model,year,rental_price_per_day)
@@ -30,8 +30,10 @@ class Bike(Vechile):
         temp= super().display_info()
         print(f"{temp},engine_capacity:{self.engine_capacity}c")
 
+def show_vechile_info(vehicle):
+    return vehicle.display_info()
         
 c1=Car("Toyota","Corolla","2020","50","5")
-c1.display_info()
+#c1.display_info()
 b1=Bike("Yamaha","R1","2019","30","998")
-b1.display_info()
+print(show_vechile_info(b1))
