@@ -11,10 +11,10 @@ class vehicle :
     def display_info(self):
        return(
             f"{self.__class__.__name__}:{self.brand} {self.model},Year:{self.year},"
-            f"Renatal Price:${self.get_rental_price_per_day()}/day"
+            f"Renatal Price:${self.__rental_price_per_day}/day"
         )
     def calculateRentalCost(self,Days):
-        return Days*int((self.get.rental_price_per_day()))
+        return Days*int((self.__rental_price_per_day))
 class Car(vehicle):
     def __init__(self, brand, model, year, rental_price_per_day,seating_capacity):
         self.seating_capacity=seating_capacity
@@ -34,6 +34,11 @@ def show_vechile_info(vehicle):
     return vehicle.display_info()
         
 c1=Car("Toyota","Corolla","2020","50","5")
-#c1.display_info()
+c1.display_info()
 b1=Bike("Yamaha","R1","2019","30","998")
-print(show_vechile_info(b1))
+b1.display_info()
+print(f"The rantal cost of {c1.brand} {c1.model} for 3 days is :{c1.calculateRentalCost(3)}")
+print(f"The rantal cost of {b1.brand} {b1.model} for 3 days is :{b1.calculateRentalCost(5)}")
+c1.set_rental_price_per_day(55)
+print(f"Updated rental price for {c1.brand} {c1.model} : ${c1.get_rental_price_per_day()}/day")
+
